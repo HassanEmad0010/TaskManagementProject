@@ -47,7 +47,28 @@ private final String tasksFilePath = "Saved Tasks.txt";
 		if ((tasks.contains(task)))
 		{
 		try {
-			task.setStatus(TaskStatus.completed);
+			task.setStatus(TaskStatus.COMPLETED);
+			return true;
+			
+		} catch (Exception e) {
+			return false;
+		}
+
+		}
+		 
+			return false;
+	}
+	
+	@Override
+	public boolean completeTask(String title) {
+
+		
+		Task task = returnTaskByTitle(title);
+		
+		if ((tasks.contains(task)))
+		{
+		try {
+			task.setStatus(TaskStatus.COMPLETED);
 			return true;
 			
 		} catch (Exception e) {
@@ -59,6 +80,18 @@ private final String tasksFilePath = "Saved Tasks.txt";
 			return false;
 	}
 
+	
+	public Task returnTaskByTitle (String title)
+	{
+		for (Task task : tasks)
+		{
+			if (task.getTitle().equals(title))
+			{
+				return task;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public Task editTaskDescription(Task task, String newDescription) {
@@ -123,7 +156,7 @@ private final String tasksFilePath = "Saved Tasks.txt";
 				tasks.clear();
 				
 				String line ;
-				int x =0;
+				
 				while ( (line = bReader.readLine()) != null )
 				{
 				System.out.println(line);
@@ -158,7 +191,7 @@ private final String tasksFilePath = "Saved Tasks.txt";
 			
 			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		return false;

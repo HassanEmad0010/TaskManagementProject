@@ -8,6 +8,7 @@ public interface TaskManagerInterface {
 	public boolean addTask(Task task);	
 //	public Task getTask ();
 	public boolean completeTask(Task task);
+	public boolean completeTask(String title);
 	public Task editTaskDescription(Task task, String description);
 	public List<Task> viewTasks();
 	public boolean saveTasks();
